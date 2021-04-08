@@ -1,0 +1,6 @@
+module Pods_yaysornays_yaysornaysTests {
+  umbrella header "Pods-yaysornays-yaysornaysTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
