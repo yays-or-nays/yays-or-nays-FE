@@ -10,38 +10,26 @@ import React from 'react';
 import {StyleSheet, SafeAreaView, Text, View, AppRegistry} from 'react-native';
 import {NativeRouter, Route, Link} from 'react-router-native';
 import NavBar from './NavBar/NavBar';
+import Profile from './Profile/Profile';
+import Categories from './Categories/Categories';
+import About from './About/About';
 
 const App = () => (
   <NativeRouter>
     <SafeAreaView>
+      <View style={styles.main}>
+        <Route path="/about" component={About} />
+        <Route exact path="/" component={Categories} />
+        <Route path="/profile" component={Profile} />
+      </View>
       <NavBar />
     </SafeAreaView>
   </NativeRouter>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    padding: 10,
-  },
-  header: {
-    fontSize: 20,
-  },
-  nav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  navItem: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 10,
-  },
-  subNavItem: {
-    padding: 5,
-  },
-  topic: {
-    textAlign: 'center',
-    fontSize: 15,
+  main: {
+    height: '90%',
   },
 });
 

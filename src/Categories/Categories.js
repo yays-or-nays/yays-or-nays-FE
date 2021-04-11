@@ -1,29 +1,39 @@
 import React from 'react';
-import {StyleSheet, ScrollView, Text, Button, TouchableOpacity} from 'react-native';
+import {StyleSheet, Header, ScrollView, Text, Button, View, TouchableOpacity} from 'react-native';
 
 const Categories = () => (
-  <ScrollView>
-    <TouchableOpacity style={styles.category}>
-      <Text>Entertainment</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.category}>
-      <Text>Animals</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.category}>
-      <Text>Food</Text>
-    </TouchableOpacity>
-  </ScrollView>
+  <View>
+    <Text style={styles.header}>Pick a Category</Text>
+    <ScrollView>
+      <TouchableOpacity style={styles.category}>
+        <Text style={styles.categoryText}>Entertainment</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.category}>
+        <Text style={styles.categoryText}>Animals</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.category}>
+        <Text style={styles.categoryText}>Food</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  </View>
 );
 
 export default Categories;
 
 const styles = StyleSheet.create({
   category: {
-    color: 'white',
     backgroundColor: 'dodgerblue',
     alignItems: 'center',
     margin: 10,
     padding: 20,
-    fontSize: 35,
+  },
+  categoryText: {
+    color: 'white',
+    fontSize: 20,
+  },
+  header: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 20,
   },
 });
