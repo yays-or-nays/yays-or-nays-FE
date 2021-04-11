@@ -1,15 +1,29 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, ScrollView, Text, Button, TouchableOpacity} from 'react-native';
 
-const Categories = ({match}) => (
-  <Text style={styles.topic}>{match.params.topicId}</Text>
+const Categories = () => (
+  <ScrollView>
+    <TouchableOpacity style={styles.category}>
+      <Text>Entertainment</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.category}>
+      <Text>Animals</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.category}>
+      <Text>Food</Text>
+    </TouchableOpacity>
+  </ScrollView>
 );
 
 export default Categories;
 
 const styles = StyleSheet.create({
-  topic: {
-    textAlign: 'center',
-    fontSize: 15,
+  category: {
+    color: 'white',
+    backgroundColor: 'dodgerblue',
+    alignItems: 'center',
+    margin: 10,
+    padding: 20,
+    fontSize: 35,
   },
 });

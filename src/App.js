@@ -7,13 +7,15 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, View, AppRegistry} from 'react-native';
+import {StyleSheet, SafeAreaView, Text, View, AppRegistry} from 'react-native';
 import {NativeRouter, Route, Link} from 'react-router-native';
 import NavBar from './NavBar/NavBar';
 
 const App = () => (
   <NativeRouter>
-    <NavBar />
+    <SafeAreaView>
+      <NavBar />
+    </SafeAreaView>
   </NativeRouter>
 );
 

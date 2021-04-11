@@ -27,7 +27,7 @@ const NavBar = ({match}) => (
 
 const styles = StyleSheet.create({
   container: {
-    height: '90%',
+    height: '95%',
     flexDirection: 'column',
     justifyContent: 'flex-end',
     marginTop: 25,
