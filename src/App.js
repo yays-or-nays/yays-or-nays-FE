@@ -6,104 +6,113 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, AppRegistry } from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { NativeRouter, Route, Link } from "react-router-native";
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+const Home = () => <Text style={styles.header}>Home</Text>;
+
+const About = () => <Text style={styles.header}>About</Text>;
+
+const Topic = ({ match }) => (
+  <Text style={styles.topic}>{match.params.topicId}</Text>
+);
+
+const Topics = ({ match }) => (
+  <View>
+    <Text style={styles.header}>Topics</Text>
+    <View>
+      <Link
+        to={`${match.url}/rendering`}
+        style={styles.subNavItem}
+        underlayColor="#f0f4f7"
+      >
+        <Text>Rendering with React</Text>
+      </Link>
+      <Link
+        to={`${match.url}/components`}
+        style={styles.subNavItem}
+        underlayColor="#f0f4f7"
+      >
+        <Text>Components</Text>
+      </Link>
+      <Link
+        to={`${match.url}/props-v-state`}
+        style={styles.subNavItem}
+        underlayColor="#f0f4f7"
+      >
+        <Text>Props v. State</Text>
+      </Link>
     </View>
-  );
-};
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+    <Route path={`${match.path}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.path}
+      render={() => (
+        <Text style={styles.topic}>Please select a topic.</Text>
+      )}
+    />
+  </View>
+);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const App = () => (
+  <NativeRouter>
+    <View style={styles.container}>
+      <View style={styles.nav}>
+        <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
+          <Text>Home</Text>
+        </Link>
+        <Link
+          to="/about"
+          underlayColor="#f0f4f7"
+          style={styles.navItem}
+        >
+          <Text>About</Text>
+        </Link>
+        <Link
+          to="/topics"
+          underlayColor="#f0f4f7"
+          style={styles.navItem}
+        >
+          <Text>Topics</Text>
+        </Link>
+      </View>
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/topics" component={Topics} />
+    </View>
+  </NativeRouter>
+);
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    marginTop: 25,
+    padding: 10
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  header: {
+    fontSize: 20
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  nav: {
+    flexDirection: "row",
+    justifyContent: "space-around"
   },
-  highlight: {
-    fontWeight: '700',
+  navItem: {
+    flex: 1,
+    alignItems: "center",
+    padding: 10
   },
+  subNavItem: {
+    padding: 5
+  },
+  topic: {
+    textAlign: "center",
+    fontSize: 15
+  }
 });
+
+AppRegistry.registerComponent("MyApp", () => App);
 
 export default App;
