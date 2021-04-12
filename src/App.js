@@ -13,6 +13,7 @@ import NavBar from './NavBar/NavBar';
 import Profile from './Profile/Profile';
 import Categories from './Categories/Categories';
 import About from './About/About';
+import HotTakes from './HotTakes/HotTakes';
 
 const App = () => (
   <NativeRouter>
@@ -21,6 +22,7 @@ const App = () => (
         <Route path="/about" component={About} />
         <Route exact path="/" component={Categories} />
         <Route path="/profile" component={Profile} />
+        <Route path="/hottakes" component={HotTakes} />
       </View>
       <NavBar />
     </SafeAreaView>
@@ -29,7 +31,7 @@ const App = () => (
 
 const styles = StyleSheet.create({
   main: {
-    height: '90%',
+    height: '95%',
   },
 });
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 
 const Categories = () => {
   // touch a category, open the Swiper component with the corresponding category info
@@ -14,19 +15,24 @@ const Categories = () => {
 
   const handlePress = id => {
     setSelectedCategory(id);
-    console.log(selectedCategory);
+    <Redirect to="/hottakes" />;
   };
+
+  useEffect(() => {
+    console.log(selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <View>
       <Text style={styles.header}>Pick a Category</Text>
       <ScrollView>
-        <TouchableOpacity
+        <Link
           id="entertainment"
           style={styles.category}
-          onPress={() => handlePress('entertainment')}>
+          onPress={() => handlePress('entertainment')}
+          to="/hottakes">
           <Text style={styles.categoryText}>Entertainment</Text>
-        </TouchableOpacity>
+        </Link>
         <TouchableOpacity
           id="food"
           style={styles.category}

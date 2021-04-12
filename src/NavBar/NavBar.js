@@ -6,13 +6,13 @@ const NavBar = ({match}) => (
   <View style={styles.container}>
     <View style={styles.nav}>
       <Link to="/about" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text>About</Text>
+        <Text style={styles.topic}>About</Text>
       </Link>
       <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text>Categories</Text>
+        <Text style={styles.topic}>Categories</Text>
       </Link>
       <Link to="/profile" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text>Profile</Text>
+        <Text style={styles.topic}>Profile</Text>
       </Link>
     </View>
   </View>
@@ -20,6 +20,8 @@ const NavBar = ({match}) => (
 
 const styles = StyleSheet.create({
   container: {
+    borderTopWidth: 0.5,
+    borderTopColor: 'grey',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
   },
   topic: {
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: 20,
   },
 });
 
