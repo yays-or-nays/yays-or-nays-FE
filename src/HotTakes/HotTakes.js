@@ -5,7 +5,8 @@ import {
   View,
   AppRegistry,
   Dimensions,
-  Image
+  Image,
+  Animated
 } from 'react-native';
 
 import {NativeRouter, Route, Link} from 'react-router-native';
@@ -28,12 +29,30 @@ const testData = [
 
 const HotTakes = () => (
   <View style={{ flex: 1 }}>
-    <View style={{ height: 60 }}>
-    </View>
+    <View style={{ height: 60 }} />
     <View style={{ flex: 1 }}>
+      <Animated.View
+        style={[
+          {
+            height: SCREEN_HEIGHT - 120,
+            width: SCREEN_WIDTH,
+            padding: 10
+          }
+        ]}
+      >
+        <Image
+          style={{
+            flex: 1,
+            height: null,
+            width: null,
+            resizeMode: "cover",
+            borderRadius: 20
+          }}
+          source={testData[0].uri}
+        />
+      </Animated.View>
     </View>
-    <View style={{ height: 60 }}>
-    </View>
+    <View style={{ height: 60 }} />
   </View>
 );
 
