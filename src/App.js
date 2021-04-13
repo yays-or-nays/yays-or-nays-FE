@@ -14,13 +14,15 @@ import Profile from './Profile/Profile';
 import Categories from './Categories/Categories';
 import About from './About/About';
 import HotTakes from './HotTakes/HotTakes';
+import WelcomePage from './LandingPage/Welcome';
 
 const App = () => (
   <NativeRouter>
     <SafeAreaView>
       <View style={styles.main}>
         <Route path="/about" component={About} />
-        <Route exact path="/" component={Categories} />
+        <Route exact path="/" component={WelcomePage} />
+        <Route path="/categories" component={Categories} />
         <Route path="/profile" component={Profile} />
         <Route path="/hottakes" component={HotTakes} />
       </View>
