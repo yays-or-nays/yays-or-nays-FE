@@ -8,7 +8,7 @@ const NavBar = ({match}) => (
       <Link to="/about" underlayColor="#f0f4f7" style={styles.navItem}>
         <Text style={styles.topic}>About</Text>
       </Link>
-      <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
+      <Link to="/categories" underlayColor="#f0f4f7" style={styles.navItem}>
         <Text style={styles.topic}>Categories</Text>
       </Link>
       <Link to="/profile" underlayColor="#f0f4f7" style={styles.navItem}>
