@@ -10,7 +10,12 @@ import {
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 
 const Categories = () => {
-  // touch a category, open the Swiper component with the corresponding category info
+  // categories hard coded in, will need to build a use effect to sent network request, save categories in redux store, and get that info from the store
+  const [categories, setCategories] = useState([
+    'Entertainment',
+    'Food',
+    'Animals',
+  ]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handlePress = id => {
@@ -22,30 +27,22 @@ const Categories = () => {
     console.log(selectedCategory);
   }, [selectedCategory]);
 
+  const categoryButtons = categories.map(category => {
+    return (
+      <Link
+        id={category}
+        style={styles.category}
+        onPress={() => handlePress(category)}
+        to="/hottakes">
+        <Text style={styles.categoryText}>{category}</Text>
+      </Link>
+    );
+  });
+
   return (
     <View>
       <Text style={styles.header}>Pick a Category</Text>
-      <ScrollView>
-        <Link
-          id="entertainment"
-          style={styles.category}
-          onPress={() => handlePress('entertainment')}
-          to="/hottakes">
-          <Text style={styles.categoryText}>Entertainment</Text>
-        </Link>
-        <TouchableOpacity
-          id="food"
-          style={styles.category}
-          onPress={() => handlePress('food')}>
-          <Text style={styles.categoryText}>Food</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          id="animals"
-          style={styles.category}
-          onPress={() => handlePress('animals')}>
-          <Text style={styles.categoryText}>Animals</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <ScrollView>{categoryButtons}</ScrollView>
     </View>
   );
 };
