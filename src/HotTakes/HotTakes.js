@@ -28,32 +28,30 @@ const testData = [
 ]
 
 const HotTakes = () => (
-  <View style={{ flex: 1 }}>
-    <View style={{ height: 60 }} />
-    <View style={{ flex: 1 }}>
-      <Animated.View
-        style={[
-          {
+  testData.map((item, i) => {
+      return (
+        <Animated.View
+          key={i}
+          style={{
             height: SCREEN_HEIGHT - 120,
             width: SCREEN_WIDTH,
-            padding: 10
-          }
-        ]}
-      >
-        <Image
-          style={{
-            flex: 1,
-            height: null,
-            width: null,
-            resizeMode: "cover",
-            borderRadius: 20
+            padding: 10,
+            position: 'absolute'
           }}
-          source={testData[0].uri}
-        />
-      </Animated.View>
-    </View>
-    <View style={{ height: 60 }} />
-  </View>
+        >
+          <Image
+            style={{
+              flex: 1,
+              height: null,
+              width: null,
+              resizeMode: "cover",
+              borderRadius: 20
+            }}
+            source={item.uri}
+          />
+        </Animated.View>
+      );
+   })
 );
 
 const styles = StyleSheet.create({
