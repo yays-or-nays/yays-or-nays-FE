@@ -21,6 +21,12 @@ const WelcomePage = () => {
         style={styles.button}>
         <Text>How To</Text>
       </TouchableOpacity>
+      <Text style={{marginTop: '20%'}}>If you've been here, you know what to do!</Text>
+      <Link
+        to="/categories"
+        style={styles.button}>
+        <Text>Get Started</Text>
+      </Link>
     </View>
   )
 }
@@ -30,7 +36,8 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   image: {
-    height: '60%'
+    height: '50%',
+    width: '80%'
   },
   button: {
     backgroundColor: 'dodgerblue',
