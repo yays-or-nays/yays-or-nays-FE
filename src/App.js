@@ -12,7 +12,7 @@ import {NativeRouter, Route, Link} from 'react-router-native';
 import NavBar from './NavBar/NavBar';
 import Profile from './Profile/Profile';
 import Categories from './Categories/Categories';
-import About from './About/About';
+import About from './LandingPage/AboutDevs';
 import HotTakes from './HotTakes/HotTakes';
 import WelcomePage from './LandingPage/Welcome';
 
