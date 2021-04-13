@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 import {
   StyleSheet,
@@ -8,8 +8,12 @@ import {
   Image
 } from 'react-native';
 import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.png';
+import HowTo from './HowTo';
 
 const WelcomePage = () => {
+
+  const [tutorialView, setTutorialView] = useState(false);
+
   return (
     <View style={styles.container}>
       <Image
