@@ -11,18 +11,23 @@ import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.pn
 import HowTo from './HowTo';
 
 const WelcomePage = () => {
-
   const [tutorialView, setTutorialView] = useState(false);
+
+  const renderTutorial = () => {
+    setTutorialView(true);
+  }
 
   return (
     <View style={styles.container}>
+      {tutorialView && <HowTo/>}
       <Image
         source={logo}
         style={styles.image}
       />
       <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
       <TouchableOpacity
-        style={styles.button}>
+        style={styles.button}
+        onPress={() => renderTutorial()}>
         <Text style={styles.buttonText}>How To</Text>
       </TouchableOpacity>
       <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
