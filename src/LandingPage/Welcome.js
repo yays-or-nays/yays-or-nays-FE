@@ -16,16 +16,16 @@ const WelcomePage = () => {
         source={logo}
         style={styles.image}
       />
-      <Text>For new users, click the 'How To' button below!</Text>
+      <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
       <TouchableOpacity
         style={styles.button}>
-        <Text>How To</Text>
+        <Text style={styles.buttonText}>How To</Text>
       </TouchableOpacity>
-      <Text style={{marginTop: '20%'}}>If you've been here, you know what to do!</Text>
+      <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
       <Link
         to="/categories"
         style={styles.button}>
-        <Text>Get Started</Text>
+        <Text style={styles.buttonText}>Get Started</Text>
       </Link>
     </View>
   )
@@ -42,10 +42,16 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'dodgerblue',
     width: '40%',
-    height: '10%',
+    height: '8%',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: '2%'
+  },
+  labelText: {
+    fontSize: 15
+  },
+  buttonText: {
+    fontSize: 20
   }
 })
 
