@@ -20,17 +20,21 @@ const WelcomePage = () => {
   return (
     <View style={styles.container}>
       {tutorialView && <HowTo/>}
-      <Image
-        source={logo}
-        style={styles.image}
-      />
-      <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => renderTutorial()}>
-        <Text style={styles.buttonText}>How To</Text>
-      </TouchableOpacity>
-      <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
+      {!tutorialView &&
+        <>
+          <Image
+            source={logo}
+            style={styles.image}
+          />
+          <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => renderTutorial()}>
+            <Text style={styles.buttonText}>How To</Text>
+          </TouchableOpacity>
+          <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
+        </>
+      }
       <Link
         to="/categories"
         style={styles.button}>
