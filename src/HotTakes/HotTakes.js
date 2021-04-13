@@ -10,6 +10,9 @@ import {
 
 import {NativeRouter, Route, Link} from 'react-router-native';
 
+const SCREEN_HEIGHT = Dimensions.get('window').height
+const SCREEN_WIDTH = Dimensions.get('window').width
+
 const testData = [
 { id: "1", uri: require('../assets/1.jpeg')},
 { id: "2", uri: require('../assets/2.jpeg')},
@@ -24,8 +27,13 @@ const testData = [
 ]
 
 const HotTakes = () => (
-  <View>
-    <Text>HotTakes</Text>
+  <View style={{ flex: 1 }}>
+    <View style={{ height: 60 }}>
+    </View>
+    <View style={{ flex: 1 }}>
+    </View>
+    <View style={{ height: 60 }}>
+    </View>
   </View>
 );
 
