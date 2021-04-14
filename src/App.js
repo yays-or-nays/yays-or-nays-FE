@@ -18,6 +18,7 @@ import WelcomePage from './LandingPage/Welcome';
 
 const App = () => (
   <NativeRouter>
+    <View style={styles.filler} />
     <SafeAreaView>
       <View style={styles.main}>
         <Route path="/about" component={About} />
@@ -32,8 +33,13 @@ const App = () => (
 );
 
 const styles = StyleSheet.create({
+  // filler is super hacky, better way to do this?
+  filler: {
+    height: 50,
+    backgroundColor: '#CB3C19',
+  },
   main: {
-    height: '95%',
+    height: '90%',
   },
 });
 

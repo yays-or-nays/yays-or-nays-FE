@@ -15,6 +15,12 @@ const Categories = () => {
     'Entertainment',
     'Food',
     'Animals',
+    'Bears',
+    'Cheese',
+    'Penguins',
+    'Hobbies',
+    'Sharks',
+    'Muffins',
   ]);
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -41,8 +47,10 @@ const Categories = () => {
 
   return (
     <View>
-      <Text style={styles.header}>Pick a Category</Text>
-      <ScrollView>{categoryButtons}</ScrollView>
+      <View style={styles.headerBorder}>
+        <Text style={styles.header}>All Categories</Text>
+      </View>
+      <ScrollView style={styles.allCategories}>{categoryButtons}</ScrollView>
     </View>
   );
 };
@@ -50,8 +58,11 @@ const Categories = () => {
 export default Categories;
 
 const styles = StyleSheet.create({
+  allCategories: {
+    height: '80%',
+  },
   category: {
-    backgroundColor: 'dodgerblue',
+    backgroundColor: '#CB3C19',
     alignItems: 'center',
     margin: 10,
     padding: 20,
@@ -63,6 +74,11 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     textAlign: 'center',
+    margin: 20,
+  },
+  headerBorder: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#000000',
     margin: 20,
   },
 });

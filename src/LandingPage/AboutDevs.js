@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
     fontSize: 30,
     padding: 30,
   },
+  headerBackground: {
+    backgroundColor: 'orange',
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 100,
+    zIndex: -1000,
+  },
   team: {
     margin: 30,
   },
