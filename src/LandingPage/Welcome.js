@@ -46,7 +46,8 @@ const WelcomePage = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems:'center'
+    alignItems:'center',
+    height: '95%'
   },
   image: {
     height: '50%',
