@@ -22,8 +22,18 @@ const HowTo = () => {
         </View >
         <View style={styles.view}>
           <Text style={styles.text}>Once you click 'Get Started', you will be taken to the main dashboard where you will see a list of categories.</Text>
-          <Text style={styles.text}>**INSERT SCREENSHOT HERE**</Text>
+          <Text style={styles.text}>**INSERT SCREENSHOT OF CATEGORY PAGE HERE**</Text>
           <Text style={styles.text}>You can choose either of the categories to answer hot takes related to that specific topic.</Text>
+        </View>
+        <View style={styles.view}>
+          <Text style={styles.text}>After you have selected a category, you will be prompted the hot takes to give your Einstein-esque opinions!</Text>
+          <Text style={styles.text}>To answer, SWIPE RIGHT on the question/image if you agree, OR, SWIPE LEFT if you disagree. You may also skip the question by clicking the **SKIP** button down below.</Text>
+          <Text style={styles.text}>**INSERT SCREENSHOT OF HOTTAKE PAGE HERE**</Text>
+        </View>
+        <View style={styles.view}>
+          <Text style={styles.text}>After you have answered, you will see what everyone else answered!</Text>
+          <Text style={styles.text}>**INSERT SCREENSHOT OF RESULTS##</Text>
+          <Text style={styles.text}>Now you know what to do, so let's get HotTake'n!</Text>
         </View>
       </Swiper>
   )
