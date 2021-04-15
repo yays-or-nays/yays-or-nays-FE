@@ -6,7 +6,8 @@ import {
   AppRegistry,
   Dimensions,
   Image,
-  Animated
+  Animated,
+  PanResponder
 } from 'react-native';
 
 import {NativeRouter, Route, Link} from 'react-router-native';
@@ -27,18 +28,37 @@ const testData = [
 { id: "10", uri: require('../assets/10.jpeg')}
 ]
 
-const HotTakes = () => (
-  testData.map((item, i) => {
+class HotTakes extends React.Component {
+  constructor() {
+    super();
+    this.position = new Animated.ValueXY();
+  }
+
+  componentWillMount() {
+    this.PanResponder = PanResponder.create({
+      onStartShoulSetPanResponder: (evt, gestureState) => true,
+      onPanResponderMove: (evt, gestureState) => {
+        this.position.setValue({ x: gestureState.dx, y: gestureState.dy });
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+      }
+    })
+  }
+
+
+  render() {
+    return testData.map((item, i) => {
       return (
         <Animated.View
-          key={i}
-          style={{
-            height: SCREEN_HEIGHT - 120,
+          {...this.PanResponder.panHandlers}
+          key={item.id}
+          style={
+            [{ transform: this.position.getTranslateTransform() },
+            { height: SCREEN_HEIGHT - 120,
             width: SCREEN_WIDTH,
             padding: 10,
-            position: 'absolute'
-          }}
-        >
+            position: 'absolute' }]
+          }>
           <Image
             style={{
               flex: 1,
@@ -52,7 +72,8 @@ const HotTakes = () => (
         </Animated.View>
       );
    })
-);
+ }
+};
 
 const styles = StyleSheet.create({
   main: {
