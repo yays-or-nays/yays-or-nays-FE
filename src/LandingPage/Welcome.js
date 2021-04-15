@@ -1,58 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.png';
 
 const WelcomePage = () => {
   return (
     <View style={styles.container}>
-      <Image
-        source={logo}
-        style={styles.image}
-      />
-      <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
-      <TouchableOpacity
-        style={styles.button}>
-        <Text style={styles.buttonText}>How To</Text>
-      </TouchableOpacity>
-      <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
-      <Link
-        to="/categories"
-        style={styles.button}>
-        <Text style={styles.buttonText}>Get Started</Text>
-      </Link>
+      <Image source={logo} style={styles.image} />
+      <View style={styles.infoSection}>
+        <Text style={styles.labelText}>
+          For new users, click the 'How To' button below!
+        </Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>How To</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.infoSection}>
+        <Text style={styles.labelText}>
+          If you've been here, you know what to do!
+        </Text>
+        <Link to="/categories" style={styles.button}>
+          <Text style={styles.buttonText}>Get Started</Text>
+        </Link>
+      </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    alignItems:'center'
+    alignItems: 'center',
   },
   image: {
-    height: '50%',
-    width: '80%'
+    height: 300,
+    width: 320,
+    marginBottom: 50,
+  },
+  infoSection: {
+    alignItems: 'center',
+    backgroundColor: '#FFEECC',
+    borderRadius: 10,
+    flexDirection: 'column',
+    fontSize: 15,
+    marginBottom: 20,
+    padding: 20,
+    width: '70%',
   },
   button: {
-    backgroundColor: 'dodgerblue',
-    width: '40%',
-    height: '8%',
+    backgroundColor: '#FF2D2E',
+    borderRadius: 10,
+    width: 200,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '2%'
+    marginTop: 15,
   },
   labelText: {
-    fontSize: 15
+    fontStyle: 'italic',
+    textAlign: 'center',
+    fontSize: 20,
   },
   buttonText: {
-    fontSize: 20
-  }
-})
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '400',
+  },
+});
 
 export default WelcomePage;
