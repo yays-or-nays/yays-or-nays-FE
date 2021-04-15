@@ -54,10 +54,13 @@ export default Categories;
 
 const styles = StyleSheet.create({
   category: {
-    backgroundColor: 'dodgerblue',
     alignItems: 'center',
+    backgroundColor: '#FF2D2E',
+    borderRadius: 30,
+    height: 100,
     margin: 10,
     padding: 20,
+    justifyContent: 'center',
   },
   categoryText: {
     color: 'white',
@@ -65,6 +68,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
+    fontWeight: 'bold',
     textAlign: 'center',
     margin: 20,
   },
