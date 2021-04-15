@@ -5,14 +5,11 @@ import {NativeRouter, Route, Link} from 'react-router-native';
 const NavBar = ({match}) => (
   <View style={styles.container}>
     <View style={styles.nav}>
-      <Link to="/about" underlayColor="#f0f4f7" style={styles.navItem}>
+      <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
         <Text style={styles.topic}>About</Text>
       </Link>
       <Link to="/categories" underlayColor="#f0f4f7" style={styles.navItem}>
         <Text style={styles.topic}>Categories</Text>
-      </Link>
-      <Link to="/profile" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text style={styles.topic}>Profile</Text>
       </Link>
     </View>
   </View>
