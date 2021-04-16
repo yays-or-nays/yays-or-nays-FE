@@ -13,28 +13,22 @@ const WelcomePage = () => {
 
   return (
     <View style={styles.container}>
-      {tutorialView && <HowTo />}
-      {!tutorialView && (
-        <>
-          <Image source={logo} style={styles.image} />
-          <View style={styles.infoSection}>
-            <Text style={styles.labelText}>
-              For new users, click the 'How To' button below!
-            </Text>
-            <TouchableOpacity style={styles.button} onPress={toggleTutorial}>
-              <Text style={styles.buttonText} >How To</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.infoSection}>
-            <Text style={styles.labelText}>
-              If you've been here, you know what to do!
-            </Text>
-            <Link to="/categories" style={styles.button}>
-              <Text style={styles.buttonText}>Get Started</Text>
-            </Link>
-          </View>
-        </>
-      )}
+      <Image
+        source={logo}
+        style={styles.image}
+        testID="logo"
+      />
+      <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
+      <TouchableOpacity
+        style={styles.button}>
+        <Text style={styles.buttonText}>How To</Text>
+      </TouchableOpacity>
+      <Text style={{marginTop: '20%', fontSize: 15}}>If you've been here, you know what to do!</Text>
+      <Link
+        to="/categories"
+        style={styles.button}>
+        <Text style={styles.buttonText}>Get Started</Text>
+      </Link>
     </View>
   );
 };
