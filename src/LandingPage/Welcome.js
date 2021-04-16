@@ -16,7 +16,7 @@ const WelcomePage = () => {
       {tutorialView && <HowTo />}
       {!tutorialView && (
         <>
-          <Image source={logo} style={styles.image} />
+          <Image source={logo} style={styles.image} testID="logo" />
           <View style={styles.infoSection}>
             <Text style={styles.labelText}>
               For new users, click the 'How To' button below!
