@@ -15,6 +15,7 @@ const WelcomePage = () => {
       <Image
         source={logo}
         style={styles.image}
+        testID="logo"
       />
       <Text style={styles.labelText}>For new users, click the 'How To' button below!</Text>
       <TouchableOpacity
