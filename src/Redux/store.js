@@ -7,10 +7,12 @@ import categories from './Reducers/categories';
 
 // Root Reducer
 const rootReducer = combineReducers({
-  categories,
+  categories: categories,
 });
 
 // Configure Store
-export const configureStore = () => {
+const configureStore = () => {
   return createStore(rootReducer);
 };
+
+export default configureStore;
