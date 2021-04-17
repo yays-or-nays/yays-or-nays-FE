@@ -5,7 +5,8 @@ import {
   View,
   AppRegistry,
   Dimensions,
-  Image,} from 'react-native';
+  Image
+} from 'react-native';
 
 import {NativeRouter, Route, Link} from 'react-router-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
@@ -38,14 +39,19 @@ class HotTakes extends React.Component {
           ref={swiper => {
             this.swiper = swiper
           }}
-          onSwiped={() => console.log('onSwiped')}
-          onSwipedLeft={() => console.log('onSwipedLeft')}
         >
-          <Card style={[styles.card, styles.card1]}><Text style={styles.label}>A</Text></Card>
-          <Card style={[styles.card, styles.card2]} onSwipedLeft={() => alert('onSwipedLeft')}><Text style={styles.label}>B</Text></Card>
-          <Card style={[styles.card, styles.card1]}><Text style={styles.label}>C</Text></Card>
-          <Card style={[styles.card, styles.card2]}><Text style={styles.label}>D</Text></Card>
-          <Card style={[styles.card, styles.card1]}><Text style={styles.label}>E</Text></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/1.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/2.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/3.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/4.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/5.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/6.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/7.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/8.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/9.jpeg')}/></Card>
+          <Card onSwipedRight={() => alert('onSwipedRight')} onSwipedLeft={() => alert('onSwipedLeft')}><Image style={styles.card} source={require('../assets/10.jpeg')}/></Card>
+
+
         </CardStack>
       </View>
     )}
