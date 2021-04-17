@@ -23,7 +23,7 @@ export function getCategories() {
           type: GET_CATEGORIES,
           error: null,
           // adjust below to access properly
-          list: response.data.categories,
+          categories: response.data.categories,
         };
       } else {
         return {
