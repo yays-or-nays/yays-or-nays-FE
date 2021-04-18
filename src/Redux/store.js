@@ -7,7 +7,7 @@ import categories from './Reducers/categories';
 
 // Root Reducer
 const rootReducer = combineReducers({
-  categories,
+  categories: categories,
 });
 
 // Configure Store
