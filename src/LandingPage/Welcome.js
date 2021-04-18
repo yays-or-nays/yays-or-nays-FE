@@ -3,6 +3,7 @@ import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.png';
 import HowTo from './HowTo';
+import {getCategories} from '../Redux/Actions/categories';
 
 const WelcomePage = () => {
   const [tutorialView, setTutorialView] = useState(false);
@@ -29,7 +30,10 @@ const WelcomePage = () => {
             <Text style={styles.labelText}>
               If you've been here, you know what to do!
             </Text>
-            <Link to="/categories" style={styles.button}>
+            <Link
+              to="/categories"
+              style={styles.button}
+              onPress={getCategories}>
               <Text style={styles.buttonText}>Get Started</Text>
             </Link>
           </View>

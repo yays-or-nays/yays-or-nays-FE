@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 import {createStore} from 'redux';
 
 // App Imports
-import categories from './Reducers/categories';
+import {categories} from './Reducers/categories';
 
 // Root Reducer
 const rootReducer = combineReducers({

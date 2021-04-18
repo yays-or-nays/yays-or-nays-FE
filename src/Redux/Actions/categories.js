@@ -11,19 +11,20 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export function getCategories() {
   return axios
     .post(
-      '/categories',
+      'https://yays-or-nays-be.herokuapp.com/graphql',
       query({
-        operation: 'cagetories maybe',
-        fields: ['id', 'name'],
+        operation: 'tags',
+        fields: ['id', 'category'],
       }),
     )
     .then(response => {
+      console.log(response.data.data.tags);
       if (response.status === 200) {
         return {
           type: GET_CATEGORIES,
           error: null,
           // adjust below to access properly
-          categories: response.data.categories,
+          categories: response.data.data.tags,
         };
       } else {
         return {
