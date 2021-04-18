@@ -3,18 +3,15 @@ import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.png';
 import HowTo from './HowTo';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getCategories} from '../Redux/Actions/categories';
 
 export const WelcomePage = (props) => {
+  const dispatch = useDispatch();
   const [tutorialView, setTutorialView] = useState(false);
 
   const toggleTutorial = () => {
     setTutorialView(!tutorialView);
-  };
-
-  const handlePress = () => {
-    props.getCategories();
   };
 
   return (
@@ -38,7 +35,7 @@ export const WelcomePage = (props) => {
             <Link
               to="/categories"
               style={styles.button}
-              onPress={handlePress}>
+              onPress={() => dispatch(getCategories())}>
               <Text style={styles.buttonText}>Get Started</Text>
             </Link>
           </View>
@@ -88,11 +85,3 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 });
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getCategories: () => dispatch(getCategories()),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(WelcomePage);

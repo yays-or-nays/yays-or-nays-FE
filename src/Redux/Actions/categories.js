@@ -9,28 +9,30 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 
 // Get all Categories
 export function getCategories() {
-  return axios
-    .post(
-      'https://yays-or-nays-be.herokuapp.com/graphql',
-      query({
-        operation: 'tags',
-        fields: ['id', 'category'],
-      }),
-    )
-    .then(response => {
-      console.log(response.data.data.tags);
-      if (response.status === 200) {
-        return {
-          type: GET_CATEGORIES,
-          error: null,
-          // adjust below to access properly
-          categories: response.data.data.tags,
-        };
-      } else {
-        return {
-          type: GET_CATEGORIES,
-          error: 'Some error occurred. Please try again.',
-        };
-      }
-    });
+  return dispatch => {
+    return axios
+      .post(
+        'https://yays-or-nays-be.herokuapp.com/graphql',
+        query({
+          operation: 'tags',
+          fields: ['id', 'category'],
+        }),
+      )
+      .then(response => {
+        console.log(response.data.data.tags);
+        if (response.status === 200) {
+          dispatch({
+            type: GET_CATEGORIES,
+            error: null,
+            // adjust below to access properly
+            categories: response.data.data.tags,
+          });
+        } else {
+          dispatch({
+            type: GET_CATEGORIES,
+            error: 'Some error occurred. Please try again.',
+          });
+        }
+      });
+  };
 }

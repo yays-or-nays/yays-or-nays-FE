@@ -1,6 +1,6 @@
 // Redux Imports
-import {combineReducers} from 'redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
 
 // App Imports
 import {categories} from './Reducers/categories';
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 
 // Configure Store
 const configureStore = () => {
-  return createStore(rootReducer);
+  return createStore(rootReducer, applyMiddleware(thunk));
 };
 
 export default configureStore;

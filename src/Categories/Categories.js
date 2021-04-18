@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
-export const Categories = ({categories}) => {
+export const Categories = () => {
   // touch a category, open the Swiper component with the corresponding category info
-
+  const categories = useSelector(state => state.categories.categories);
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handlePress = id => {
@@ -23,33 +23,26 @@ export const Categories = ({categories}) => {
   useEffect(() => {
     console.log(selectedCategory);
   }, [selectedCategory]);
-  
+
+  const categoryButtons = categories.map(category => {
+    return (
+      <Link
+        id={category.id}
+        key={category.id}
+        style={styles.category}
+        onPress={() => handlePress(category.id)}
+        to="/hottakes">
+        <Text style={styles.categoryText}>
+          {categories.length ? category.category : 'Loading'}
+        </Text>
+      </Link>
+    );
+  });
+
   return (
     <View>
       <Text style={styles.header}>Pick a Category</Text>
-      <ScrollView>
-        <Link
-          id="entertainment"
-          style={styles.category}
-          onPress={() => handlePress('entertainment')}
-          to="/hottakes">
-          <Text style={styles.categoryText}>
-            {categories ? categories[0].category : 'Loading'}
-          </Text>
-        </Link>
-        <TouchableOpacity
-          id="food"
-          style={styles.category}
-          onPress={() => handlePress('food')}>
-          <Text style={styles.categoryText}>Food</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          id="animals"
-          style={styles.category}
-          onPress={() => handlePress('animals')}>
-          <Text style={styles.categoryText}>Animals</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <ScrollView>{categoryButtons}</ScrollView>
     </View>
   );
 };
@@ -75,9 +68,3 @@ const styles = StyleSheet.create({
     margin: 20,
   },
 });
-
-const mapStateToProps = state => ({
-  categories: state.categories,
-});
-
-export default connect(mapStateToProps)(Categories);
