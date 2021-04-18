@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
+import {connect} from 'react-redux';
 
-const Categories = () => {
+export const Categories = ({categories}) => {
   // touch a category, open the Swiper component with the corresponding category info
+
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handlePress = id => {
@@ -21,7 +23,7 @@ const Categories = () => {
   useEffect(() => {
     console.log(selectedCategory);
   }, [selectedCategory]);
-
+  
   return (
     <View>
       <Text style={styles.header}>Pick a Category</Text>
@@ -31,7 +33,9 @@ const Categories = () => {
           style={styles.category}
           onPress={() => handlePress('entertainment')}
           to="/hottakes">
-          <Text style={styles.categoryText}>Entertainment</Text>
+          <Text style={styles.categoryText}>
+            {categories ? categories[0].category : 'Loading'}
+          </Text>
         </Link>
         <TouchableOpacity
           id="food"
@@ -49,8 +53,6 @@ const Categories = () => {
     </View>
   );
 };
-
-export default Categories;
 
 const styles = StyleSheet.create({
   category: {
@@ -73,3 +75,9 @@ const styles = StyleSheet.create({
     margin: 20,
   },
 });
+
+const mapStateToProps = state => ({
+  categories: state.categories,
+});
+
+export default connect(mapStateToProps)(Categories);
