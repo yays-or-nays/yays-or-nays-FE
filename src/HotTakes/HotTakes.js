@@ -17,7 +17,6 @@ import {getHotTake} from '../Redux/Actions/hotTakes';
 const HotTakes = () => {
   const dispatch = useDispatch();
   let hotTake = useSelector(state => state.hotTakes.details);
-  // setCurrentTake(hotTake);
 
   const handlePress = id => {
     dispatch(getHotTake(id));
@@ -28,9 +27,10 @@ const HotTakes = () => {
       <Card
         key={hotTake.id}
         onSwipedRight={() => mutateYes(hotTake.id)}
-        onSwipedLeft={() => mutateNo(hotTake.id)}>
-        <Text>{hotTake.question}</Text>
-        <Image style={styles.card} source={{uri: hotTake.picture}} />
+        onSwipedLeft={() => mutateNo(hotTake.id)}
+        style={styles.card}>
+        <Text style={styles.question}>{hotTake.question}</Text>
+        <Image style={styles.image} source={{uri: hotTake.picture}} />
       </Card>
     ) : (
       <Text>Loading...</Text>
@@ -44,21 +44,25 @@ const HotTakes = () => {
         style={styles.content}
         renderNoMoreCards={() => {
           return (
-            <>
+            <View style={styles.resultsContainer}>
+              <Text style={styles.resultsTitle}>
+                And the people say...
+              </Text>
               <Text
-                style={{
-                  width: '70%',
-                  fontWeight: '700',
-                  fontSize: 20,
-                  color: 'black',
-                }}>
+                style={styles.resultsText}>
                 Yes Votes: {hotTake ? hotTake.yesVote : 'Loading'}
+              </Text>
+              <Text
+                style={styles.resultsText}>
                 No Votes: {hotTake ? hotTake.noVote : 'Loading'}
               </Text>
-              <Link to="/hottakes" onPress={() => handlePress(hotTake.tag.id)}>
-                <Text>Next Hot Take</Text>
+              <Link
+                to="/hottakes"
+                onPress={() => handlePress(hotTake.tag.id)}
+                style={styles.button}>
+                <Text style={styles.buttonText}>Next Hot Take</Text>
               </Link>
-            </>
+            </View>
           );
         }}
         ref={swiper => {
@@ -71,11 +75,6 @@ const HotTakes = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#f2f2f2',
-  },
   content: {
     flex: 5,
     alignItems: 'center',
@@ -83,76 +82,57 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 350,
-    height: 650,
+    height: 600,
     backgroundColor: '#FE474C',
     borderRadius: 5,
-    shadowColor: 'rgba(0,0,0,0.5)',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.5,
+    alignItems: 'center'
   },
-  card1: {
-    backgroundColor: '#FE474C',
-  },
-  card2: {
-    backgroundColor: '#FEB12C',
-  },
-  label: {
-    lineHeight: 400,
+  question: {
+    fontSize: 25,
     textAlign: 'center',
-    fontSize: 55,
-    fontFamily: 'System',
-    color: '#ffffff',
-    backgroundColor: 'transparent',
+    margin: '3%',
+    paddingTop: '5%',
+    color: 'white',
+    fontWeight: '500'
   },
-  footer: {
-    flex: 1,
-    justifyContent: 'center',
+  image: {
+    width: 300,
+    height: 500,
+    resizeMode: 'contain',
+    position: 'absolute',
+    marginTop: '25%'
+  },
+  resultsContainer: {
+    height: 300,
+    width: 350,
+    backgroundColor: '#FFEECC',
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8
   },
-  buttonContainer: {
-    width: 220,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  resultsTitle: {
+    fontSize: 20,
+    marginBottom: '8%'
+  },
+  resultsText: {
+    fontWeight: '700',
+    fontSize: 20,
+    margin: '2%'
   },
   button: {
-    shadowColor: 'rgba(0,0,0,0.3)',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.5,
-    backgroundColor: '#fff',
+    width: '55%',
+    height: '20%',
+    backgroundColor: '#FE474C',
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 0,
+    marginTop: '5%'
   },
-  orange: {
-    width: 55,
-    height: 55,
-    borderWidth: 6,
-    borderColor: 'rgb(246,190,66)',
-    borderRadius: 55,
-    marginTop: -15,
-  },
-  green: {
-    width: 75,
-    height: 75,
-    backgroundColor: '#fff',
-    borderRadius: 75,
-    borderWidth: 6,
-    borderColor: '#01df8a',
-  },
-  red: {
-    width: 75,
-    height: 75,
-    backgroundColor: '#fff',
-    borderRadius: 75,
-    borderWidth: 6,
-    borderColor: '#fd267d',
-  },
+  buttonText: {
+    color: 'white',
+    fontWeight: '600',
+    fontSize: 20
+  }
 });
 
 export default HotTakes;
