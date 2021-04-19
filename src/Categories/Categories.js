@@ -16,8 +16,11 @@ export const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handlePress = id => {
+    console.log(id);
+    // trigger action creator that sets state of hot takes with the first question it gets back
+    // takes id as parameter, send with axios post
+    //
     setSelectedCategory(id);
-    <Redirect to="/hottakes" />;
   };
 
   useEffect(() => {
