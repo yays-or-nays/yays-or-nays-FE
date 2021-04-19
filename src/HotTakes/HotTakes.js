@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -23,8 +22,6 @@ const HotTakes = () => {
   const handlePress = id => {
     dispatch(getHotTake(id));
   };
-
-  console.log(hotTake);
 
   const card = () => {
     return hotTake ? (
