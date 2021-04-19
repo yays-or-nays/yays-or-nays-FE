@@ -3,8 +3,11 @@ import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import logo from '../../ios/yaysornays/Images.xcassets/Image.imageset/appLogo.png';
 import HowTo from './HowTo';
+import {useDispatch} from 'react-redux';
+import {getCategories} from '../Redux/Actions/categories';
 
-const WelcomePage = () => {
+export const WelcomePage = (props) => {
+  const dispatch = useDispatch();
   const [tutorialView, setTutorialView] = useState(false);
 
   const toggleTutorial = () => {
@@ -16,7 +19,7 @@ const WelcomePage = () => {
       {tutorialView && <HowTo />}
       {!tutorialView && (
         <>
-          <Image source={logo} style={styles.image} />
+          <Image source={logo} style={styles.image} testID="logo" />
           <View style={styles.infoSection}>
             <Text style={styles.labelText}>
               For new users, click the 'How To' button below!
@@ -29,7 +32,10 @@ const WelcomePage = () => {
             <Text style={styles.labelText}>
               If you've been here, you know what to do!
             </Text>
-            <Link to="/categories" style={styles.button}>
+            <Link
+              to="/categories"
+              style={styles.button}
+              onPress={() => dispatch(getCategories())}>
               <Text style={styles.buttonText}>Get Started</Text>
             </Link>
           </View>
@@ -79,5 +85,3 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 });
-
-export default WelcomePage;

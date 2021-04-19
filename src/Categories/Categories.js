@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,50 +6,42 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import React from 'react';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {getHotTake} from '../Redux/Actions/hotTakes';
 
-const Categories = () => {
+export const Categories = () => {
   // touch a category, open the Swiper component with the corresponding category info
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const categories = useSelector(state => state.categories.categories);
+  const dispatch = useDispatch();
 
   const handlePress = id => {
-    setSelectedCategory(id);
-    <Redirect to="/hottakes" />;
+    dispatch(getHotTake(id));
   };
 
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
+  const categoryButtons = categories.map(category => {
+    return (
+      <Link
+        id={category.id}
+        key={category.id}
+        style={styles.category}
+        onPress={() => handlePress(category.id)}
+        to="/hottakes">
+        <Text style={styles.categoryText}>
+          {categories.length ? category.category : 'Loading'}
+        </Text>
+      </Link>
+    );
+  });
 
   return (
     <View>
       <Text style={styles.header}>Pick a Category</Text>
-      <ScrollView>
-        <Link
-          id="entertainment"
-          style={styles.category}
-          onPress={() => handlePress('entertainment')}
-          to="/hottakes">
-          <Text style={styles.categoryText}>Entertainment</Text>
-        </Link>
-        <TouchableOpacity
-          id="food"
-          style={styles.category}
-          onPress={() => handlePress('food')}>
-          <Text style={styles.categoryText}>Food</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          id="animals"
-          style={styles.category}
-          onPress={() => handlePress('animals')}>
-          <Text style={styles.categoryText}>Animals</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <ScrollView>{categoryButtons}</ScrollView>
     </View>
   );
 };
-
-export default Categories;
 
 const styles = StyleSheet.create({
   category: {

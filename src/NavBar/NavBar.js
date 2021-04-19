@@ -1,19 +1,29 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {NativeRouter, Route, Link} from 'react-router-native';
+import {useDispatch} from 'react-redux';
+import {getCategories} from '../Redux/Actions/categories';
 
-const NavBar = ({match}) => (
-  <View style={styles.container}>
-    <View style={styles.nav}>
-      <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text style={styles.topic}>About</Text>
-      </Link>
-      <Link to="/categories" underlayColor="#f0f4f7" style={styles.navItem}>
-        <Text style={styles.topic}>Categories</Text>
-      </Link>
+const NavBar = ({match}) => {
+  const dispatch = useDispatch();
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.nav}>
+        <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
+          <Text style={styles.topic}>About</Text>
+        </Link>
+        <Link
+          onPress={() => dispatch(getCategories())}
+          to="/categories"
+          underlayColor="#f0f4f7"
+          style={styles.navItem}>
+          <Text style={styles.topic}>Categories</Text>
+        </Link>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
