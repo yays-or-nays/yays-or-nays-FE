@@ -28,7 +28,10 @@ const testData = [
 
 const HotTakes = () => {
 
+  const hotTake = useSelector(state => state.hotTakes.details)
+
   const category = testData.map((item, i) => {
+    console.log(hotTake)
     return (
       <Card
       key={i}
