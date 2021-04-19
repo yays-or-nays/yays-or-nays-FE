@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -9,8 +10,11 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {Link} from 'react-router-native';
+import {getCategories} from '../Redux/Actions/categories';
 
 const HowTo = () => {
+  const dispatch = useDispatch();
+
   return (
     <Swiper style={styles.scrollView}>
       <View style={styles.view}>
@@ -65,7 +69,10 @@ const HowTo = () => {
             Now you know what to do, so let's get HotTake'n!
           </Text>
         </View>
-        <Link to="/categories" style={styles.button}>
+        <Link
+          onPress={() => dispatch(getCategories())}
+          to="/categories"
+          style={styles.button}>
           <Text style={styles.buttonText}>Get Started</Text>
         </Link>
       </View>
