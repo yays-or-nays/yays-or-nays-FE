@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 
 // App Imports
 import {categories} from './Reducers/categories';
+import {hotTakes} from './Reducers/hotTakes';
 
 // Root Reducer
 const rootReducer = combineReducers({
   categories: categories,
+  hotTakes: hotTakes,
 });
 
 // Configure Store
