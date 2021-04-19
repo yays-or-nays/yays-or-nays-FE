@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,57 +11,63 @@ import {
 
 import {NativeRouter, Route, Link} from 'react-router-native';
 import CardStack, {Card} from 'react-native-card-stack-swiper';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {mutateYes, mutateNo} from '../util';
-
-const testData = [
-  {id: '32', uri: require('../assets/1.jpeg')},
-  {id: '32', uri: require('../assets/2.jpeg')},
-  {id: '43', uri: require('../assets/3.jpeg')},
-  {id: '44', uri: require('../assets/4.jpeg')},
-  {id: '45', uri: require('../assets/5.jpeg')},
-  {id: '46', uri: require('../assets/6.jpeg')},
-  {id: '47', uri: require('../assets/7.jpeg')},
-  {id: '48', uri: require('../assets/8.jpeg')},
-  {id: '49', uri: require('../assets/9.jpeg')},
-  {id: '80', uri: require('../assets/10.jpeg')},
-];
+import {getHotTake} from '../Redux/Actions/hotTakes';
 
 const HotTakes = () => {
-  const hotTake = useSelector(state => state.hotTakes.details);
-  const hotTakeArray = [hotTake];
+  const dispatch = useDispatch();
+  let hotTake = useSelector(state => state.hotTakes.details);
+  // setCurrentTake(hotTake);
 
-  const category = testData.map((item, i) => {
-    return (
+  const handlePress = id => {
+    dispatch(getHotTake(id));
+  };
+
+  console.log(hotTake);
+
+  const card = () => {
+    return hotTake ? (
       <Card
-        key={i}
-        onSwipedRight={() => mutateYes(item.id)}
-        onSwipedLeft={() => mutateNo(item.id)}>
-        <Image style={styles.card} source={item.uri} />
+        key={hotTake.id}
+        onSwipedRight={() => mutateYes(hotTake.id)}
+        onSwipedLeft={() => mutateNo(hotTake.id)}>
+        <Text>{hotTake.question}</Text>
+        <Image style={styles.card} source={{uri: hotTake.picture}} />
       </Card>
+    ) : (
+      <Text>Loading...</Text>
     );
-  });
+  };
 
   return (
     <View style={{flex: 1}}>
       <CardStack
+        key={hotTake ? hotTake.id : NaN}
         style={styles.content}
-        renderNoMoreCards={() => (
-          <Text
-            style={{
-              width: '70%',
-              fontWeight: '700',
-              fontSize: 20,
-              color: 'black',
-            }}>
-            No more "Hot Takes" in this category! Click on "Categories" to get
-            started with more "Hot Takes."
-          </Text>
-        )}
+        renderNoMoreCards={() => {
+          return (
+            <>
+              <Text
+                style={{
+                  width: '70%',
+                  fontWeight: '700',
+                  fontSize: 20,
+                  color: 'black',
+                }}>
+                Yes Votes: {hotTake ? hotTake.yesVote : 'Loading'}
+                No Votes: {hotTake ? hotTake.noVote : 'Loading'}
+              </Text>
+              <Link to="/hottakes" onPress={() => handlePress(hotTake.tag.id)}>
+                <Text>Next Hot Take</Text>
+              </Link>
+            </>
+          );
+        }}
         ref={swiper => {
           this.swiper = swiper;
         }}>
-        {category}
+        {card()}
       </CardStack>
     </View>
   );
