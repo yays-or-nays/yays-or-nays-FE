@@ -6,6 +6,7 @@
  * @flow strict-local
  */
 
+
 import React from 'react';
 import {StyleSheet, SafeAreaView, Text, View, AppRegistry} from 'react-native';
 import {NativeRouter, Route, Link} from 'react-router-native';
