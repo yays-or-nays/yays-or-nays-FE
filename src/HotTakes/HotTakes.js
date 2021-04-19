@@ -5,7 +5,8 @@ import {
   View,
   AppRegistry,
   Dimensions,
-  Image
+  Image,
+  Button
 } from 'react-native';
 
 import {NativeRouter, Route, Link} from 'react-router-native';
@@ -46,8 +47,7 @@ class HotTakes extends React.Component {
       <View style={{ flex: 1 }}>
         <CardStack
           style={styles.content}
-          renderNoMoreCards={() =>
-            <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>No more Hot Takes in this category!</Text>}
+          renderNoMoreCards={() => <Text style={{ width: '70%', fontWeight: '700', fontSize: 20, color: 'black' }}>No more "Hot Takes" in this category! Click on "Categories" to get started with more "Hot Takes."</Text>}
           ref={swiper => {
             this.swiper = swiper
           }}
