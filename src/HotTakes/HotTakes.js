@@ -11,7 +11,7 @@ import {
 
 import {NativeRouter, Route, Link} from 'react-router-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
-
+import { useSelector } from 'react-redux';
 
 const testData = [
 { id: "1", uri: require('../assets/1.jpeg')},
@@ -26,23 +26,20 @@ const testData = [
 { id: "10", uri: require('../assets/10.jpeg')}
 ]
 
-class HotTakes extends React.Component {
-  constructor() {
-    super();
-  }
+const HotTakes = () => {
 
-  render() {
-    const category = testData.map((item, i) => {
-      return (
-        <Card
-        key={i}
-        onSwipedRight={() => alert('onSwipedRight')}
-        onSwipedLeft={() => alert('onSwipedLeft')}>
-        <Image style={styles.card}
-        source={item.uri}/>
-        </Card>
-      )
-    })
+  const category = testData.map((item, i) => {
+    return (
+      <Card
+      key={i}
+      onSwipedRight={() => alert('onSwipedRight')}
+      onSwipedLeft={() => alert('onSwipedLeft')}>
+      <Image style={styles.card}
+      source={item.uri}/>
+      </Card>
+    )
+  })
+
     return (
       <View style={{ flex: 1 }}>
         <CardStack
@@ -55,7 +52,7 @@ class HotTakes extends React.Component {
         {category}
         </CardStack>
       </View>
-    )}
+    )
   };
 
   const styles = StyleSheet.create({

@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,25 +6,19 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import React from 'react';
 import {Redirect, NativeRouter, Route, Link} from 'react-router-native';
 import {useSelector, useDispatch} from 'react-redux';
+import {getHotTake} from '../Redux/Actions/hotTakes';
 
 export const Categories = () => {
   // touch a category, open the Swiper component with the corresponding category info
   const categories = useSelector(state => state.categories.categories);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const dispatch = useDispatch();
 
   const handlePress = id => {
-    console.log(id);
-    // trigger action creator that sets state of hot takes with the first question it gets back
-    // takes id as parameter, send with axios post
-    //
-    setSelectedCategory(id);
+    dispatch(getHotTake(id));
   };
-
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
 
   const categoryButtons = categories.map(category => {
     return (

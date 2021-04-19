@@ -19,7 +19,6 @@ export function getCategories() {
         }),
       )
       .then(response => {
-        console.log(response.data.data.tags);
         if (response.status === 200) {
           dispatch({
             type: GET_CATEGORIES,

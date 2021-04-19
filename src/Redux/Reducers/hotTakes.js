@@ -1,9 +1,9 @@
 // Actions
-import {GET_HOTTAKE, POST_YES, POST_NO} from '../Actions/hotTakes';
+import {GET_HOTTAKE} from '../Actions/hotTakes';
 
 //Initial State
 const hotTakesInitialState = {
-  id: null,
+  error: null,
   details: null
 }
 
@@ -14,7 +14,7 @@ export const hotTakes = (state= hotTakesInitialState, action) => {
     case GET_HOTTAKE:
     return {
       ...state,
-      id: action.id,
+      error: action.error,
       details: action.details
     }
     default:
