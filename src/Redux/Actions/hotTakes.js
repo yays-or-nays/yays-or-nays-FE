@@ -13,8 +13,15 @@ export function getHotTake(categoryID) {
         'https://yays-or-nays-be.herokuapp.com/graphql',
         query({
           operation: `hotTakeByCategory(tagId: ${categoryID})`,
-          fields: ['id', 'question', 'yesVote', 'noVote', 'picture', 'tag {id, category}']
-        })
+          fields: [
+            'id',
+            'question',
+            'yesVote',
+            'noVote',
+            'picture',
+            'tag {id, category}',
+          ],
+        }),
       )
       .then(response => {
         if (response.status === 200) {
@@ -29,6 +36,6 @@ export function getHotTake(categoryID) {
             error: 'Some error occurred. Please try again.',
           });
         }
-      })
-    }
+      });
+  };
 }

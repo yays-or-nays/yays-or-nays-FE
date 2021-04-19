@@ -7,13 +7,13 @@ const mutateYes = id => {
       'https://yays-or-nays-be.herokuapp.com/graphql',
       mutation({
         operation: `incrementYesVote(input: {id: ${id}})`,
-        fields: ['clientMutationId']
+        fields: ['clientMutationId'],
       }),
     )
     .then(response => {
       console.log(response.data);
       if (response.status < 400) {
-        console.log("sucees");
+        console.log('sucees');
         // dispatch({
         //   type: GET_CATEGORIES,
         //   error: null,
@@ -21,7 +21,7 @@ const mutateYes = id => {
         //   categories: response.data.data.tags,
         // });
       } else {
-        console.log('fail')
+        console.log('fail');
         // dispatch({
         //   type: GET_CATEGORIES,
         //   error: 'Some error occurred. Please try again.',
