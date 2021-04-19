@@ -48,7 +48,6 @@ class HotTakes extends React.Component {
           style={styles.content}
           renderNoMoreCards={() =>
             <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>No more Hot Takes in this category!</Text>}
-            <Button></Button>
           ref={swiper => {
             this.swiper = swiper
           }}
@@ -71,8 +70,8 @@ class HotTakes extends React.Component {
       justifyContent: 'center',
     },
     card:{
-      width: 320,
-      height: 470,
+      width: 350,
+      height: 650,
       backgroundColor: '#FE474C',
       borderRadius: 5,
       shadowColor: 'rgba(0,0,0,0.5)',
