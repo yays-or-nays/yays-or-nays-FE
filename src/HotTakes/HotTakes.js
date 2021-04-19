@@ -46,7 +46,9 @@ class HotTakes extends React.Component {
       <View style={{ flex: 1 }}>
         <CardStack
           style={styles.content}
-          renderNoMoreCards={() => <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>No more cards</Text>}
+          renderNoMoreCards={() =>
+            <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>No more Hot Takes in this category!</Text>}
+            <Button></Button>
           ref={swiper => {
             this.swiper = swiper
           }}
