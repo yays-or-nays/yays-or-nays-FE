@@ -13,13 +13,6 @@ const mutateYes = id => {
     .then(response => {
       console.log(response.data);
       if (response.status < 400) {
-        console.log('sucees');
-        // dispatch({
-        //   type: GET_CATEGORIES,
-        //   error: null,
-        //   // adjust below to access properly
-        //   categories: response.data.data.tags,
-        // });
       } else {
         console.log('fail');
         // dispatch({
@@ -44,18 +37,8 @@ const mutateNo = id => {
       console.log(response.data);
       if (response.status < 400) {
         return response.data;
-        // dispatch({
-        //   type: GET_CATEGORIES,
-        //   error: null,
-        //   // adjust below to access properly
-        //   categories: response.data.data.tags,
-        // });
       } else {
         return response.status;
-        // dispatch({
-        //   type: GET_CATEGORIES,
-        //   error: 'Some error occurred. Please try again.',
-        // });
       }
     });
 };
