@@ -7,7 +7,7 @@ import {
   Image,
   Button,
 } from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {NativeRouter, Route, Link} from 'react-router-native';
 import CardStack, {Card} from 'react-native-card-stack-swiper';
 import {useSelector, useDispatch} from 'react-redux';
@@ -22,12 +22,25 @@ const HotTakes = () => {
     dispatch(getHotTake(id));
   };
 
+  const [hotTakeResult, setHotTakeResult] = useState(null);
+
+  useEffect(() => {
+    console.log(hotTakeResult)
+    console.log(hotTake)
+  })
+
   const card = () => {
     return hotTake ? (
       <Card
         key={hotTake.id}
-        onSwipedRight={() => mutateYes(hotTake.id)}
-        onSwipedLeft={() => mutateNo(hotTake.id)}
+        onSwipedRight={() => {
+          setHotTakeResult(hotTake.yesVote++)
+          mutateYes(hotTake.id)
+        }}
+        onSwipedLeft={() => {
+          mutateNo(hotTake.id)
+          setHotTakeResult(hotTake.noVote++)
+        }}
         style={styles.card}>
         <Text style={styles.question}>{hotTake.question}</Text>
         <Image style={styles.image} source={{uri: hotTake.picture}} />
