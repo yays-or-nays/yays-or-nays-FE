@@ -42,8 +42,8 @@ const HotTakes = () => {
           setHotTakeResult(hotTake.noVote++)
         }}
         style={styles.card}>
-        <Text style={styles.question}>{hotTake.question}</Text>
-        <Image style={styles.image} source={{uri: hotTake.picture}} />
+        <Text style={styles.question} testID='text'>{hotTake.question}</Text>
+        <Image style={styles.image} source={{uri: hotTake.picture}} testID='image' />
       </Card>
     ) : (
       <Text>Loading...</Text>
