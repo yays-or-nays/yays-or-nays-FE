@@ -19,7 +19,8 @@ describe('App', () => {
   });
 
   it('should be able to see votes for and against a hot take after voting', async () => {
-    await expect(element(by.text('Yes Votes'))).toBeVisible();
+    await expect(element(by.text('And the people say...'))).toBeVisible();
+    await expect(element(by.text('Next Hot Take'))).toBeVisible();
   });
 
 });
