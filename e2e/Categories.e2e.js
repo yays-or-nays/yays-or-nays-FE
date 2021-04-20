@@ -6,6 +6,8 @@ describe('App', () => {
 
   it('should route to a category from Get Started', async () => {
     await element(by.text('Get Started')).tap();
+
+    await expect(element(by.text('Pick a Category'))).toBeVisible();
     await expect(element(by.text('Food & Beverage'))).toBeVisible();
     await expect(element(by.text('Entertainment'))).toBeVisible();
     await expect(element(by.text('Software Development'))).toBeVisible();
@@ -21,6 +23,7 @@ describe('App', () => {
     await element(by.id('howTo')).swipe('left');
     await element(by.text('Get Started')).tap();
 
+    await expect(element(by.text('Pick a Category'))).toBeVisible();
     await expect(element(by.text('Food & Beverage'))).toBeVisible();
     await expect(element(by.text('Entertainment'))).toBeVisible();
     await expect(element(by.text('Software Development'))).toBeVisible();
@@ -31,6 +34,7 @@ describe('App', () => {
     await element(by.text('About')).tap();
     await element(by.text('Categories')).tap();
 
+    await expect(element(by.text('Pick a Category'))).toBeVisible();
     await expect(element(by.text('Food & Beverage'))).toBeVisible();
     await expect(element(by.text('Entertainment'))).toBeVisible();
     await expect(element(by.text('Software Development'))).toBeVisible();
