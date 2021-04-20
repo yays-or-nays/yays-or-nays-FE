@@ -7,10 +7,14 @@ import {
   ScrollView,
   View,
   Item,
+  Image
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {Link} from 'react-router-native';
 import {getCategories} from '../Redux/Actions/categories';
+import categoryScreenshot from '../assets/categories.png'
+import hotTakeScreenshot from '../assets/hotTakes.png'
+import resultsScreenshot from '../assets/results.png'
 
 const HowTo = () => {
   const dispatch = useDispatch();
@@ -37,9 +41,7 @@ const HowTo = () => {
           Once you click 'Get Started', you will be taken to the main dashboard
           where you will see a list of categories.
         </Text>
-        <Text style={styles.text}>
-          **INSERT SCREENSHOT OF CATEGORY PAGE HERE**
-        </Text>
+        <Image source={categoryScreenshot} style={styles.image}/>
         <Text style={styles.text}>
           You can choose either of the categories to answer hot takes related to
           that specific topic.
@@ -52,19 +54,16 @@ const HowTo = () => {
         </Text>
         <Text style={styles.text}>
           To answer, SWIPE RIGHT on the question/image if you agree, OR, SWIPE
-          LEFT if you disagree. You may also skip the question by clicking the
-          **SKIP** button down below.
+          LEFT if you disagree.
         </Text>
-        <Text style={styles.text}>
-          **INSERT SCREENSHOT OF HOTTAKE PAGE HERE**
-        </Text>
+        <Image style={styles.image2} source={hotTakeScreenshot}/>
       </View>
       <View style={styles.view}>
-        <View style={(styles.view, styles.instructionsCenter)}>
+        <View style={(styles.view, styles.instructionsCenter2)}>
           <Text style={styles.text}>
             After you have answered, you will see what everyone else answered!
           </Text>
-          <Text style={styles.text}>**INSERT SCREENSHOT OF RESULTS##</Text>
+          <Image source={resultsScreenshot} style={styles.image2}/>
           <Text style={styles.text}>
             Now you know what to do, so let's get HotTake'n!
           </Text>
@@ -112,7 +111,13 @@ const styles = StyleSheet.create({
     margin: 30,
     borderRadius: 30,
     backgroundColor: '#FF2D2E',
-    height: 450,
+    height: 630,
+  },
+  instructionsCenter2: {
+    margin: 20,
+    borderRadius: 30,
+    backgroundColor: '#FF2D2E',
+    height: 550,
   },
   button: {
     backgroundColor: '#FF2D2E',
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
     margin: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   buttonText: {
     color: 'white',
@@ -132,6 +137,15 @@ const styles = StyleSheet.create({
   },
   centered: {
     alignSelf: 'center',
+  },
+  image: {
+    height: 350,
+    resizeMode: 'contain',
+  },
+  image2: {
+    height: 320,
+    resizeMode: 'contain',
+    alignSelf: 'center'
   },
 });
 
