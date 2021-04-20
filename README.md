@@ -162,18 +162,18 @@ Contributions are what make the open source community such an amazing place to b
 
 Brian Forbes
 
-[Email](brianandrewf81@gmail.com)
+[Email](mailto:brianandrewf81@gmail.com)
 
 [GitHub](https://github.com/Codeherder19)
 
 Luke Mason
 
-[Email](lukjmason@gmail.com)
+[Email](mailto:lukjmason@gmail.com)
 
 [GitHub](https://github.com/LukeMason33)
 
 Matthew Dean
 
-[Email](deanma95@gmail.com)
+[Email](mailto:deanma95@gmail.com)
 
 [GitHub](https://github.com/mattdeann)
