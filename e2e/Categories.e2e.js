@@ -18,9 +18,9 @@ describe('App', () => {
   it('should route to a category from How To', async () => {
     await element(by.text('About')).tap();
     await element(by.text('How To')).tap();
-    await element(by.id('howTo')).swipe('left');
-    await element(by.id('howTo')).swipe('left');
-    await element(by.id('howTo')).swipe('left');
+    await element(by.id('tutorial')).swipe('left');
+    await element(by.id('tutorial')).swipe('left');
+    await element(by.id('tutorial')).swipe('left');
     await element(by.text('Get Started')).tap();
 
     await expect(element(by.text('Pick a Category'))).toBeVisible();
