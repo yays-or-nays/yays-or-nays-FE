@@ -20,7 +20,8 @@ const HowTo = () => {
   const dispatch = useDispatch();
 
   return (
-    <Swiper testID="howTo" style={styles.scrollView}>
+
+    <Swiper style={styles.scrollView} testID="tutorial">
       <View style={styles.view}>
         <Text style={styles.headerText}>Welcome to HotTakes!</Text>
         <View style={styles.instructions}>
