@@ -37,4 +37,16 @@ describe('App', () => {
     await expect(element(by.text('Next Hot Take'))).toBeVisible();
   });
 
+  it('should be able to return to categories and start a different round of hot takes', async () => {
+    await element(by.text('Categories')).tap();
+    await element(by.text('Food & Beverage')).tap();
+    await expect(element(by.id('text'))).toBeVisible();
+    await expect(element(by.id('image'))).toBeVisible();
+    await element(by.id('card')).swipe('right')
+    await expect(element(by.id('yes-vote'))).toBeVisible();
+    await expect(element(by.id('no-vote'))).toBeVisible();
+    await expect(element(by.text('And the people say...'))).toBeVisible();
+    await expect(element(by.text('Next Hot Take'))).toBeVisible();
+  })
+
 });
