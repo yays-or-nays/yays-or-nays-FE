@@ -24,6 +24,8 @@
 
 [Back End](https://github.com/yays-or-nays/yays-or-nays-BE)
 
+[Wireframes / Design / API Contracting](https://miro.com/app/board/o9J_lL9vTbw=/)
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
