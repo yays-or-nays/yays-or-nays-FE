@@ -15,10 +15,24 @@ describe('App', () => {
   it('should be able to select a category and vote on hot takes', async () => {
     await element(by.text('Entertainment')).tap();
     await expect(element(by.id('text'))).toBeVisible();
+    await expect(element(by.id('image'))).toBeVisible();
     await element(by.id('card')).swipe('right')
   });
 
   it('should be able to see votes for and against a hot take after voting', async () => {
+    await expect(element(by.text('And the people say...'))).toBeVisible();
+    await expect(element(by.text('Next Hot Take'))).toBeVisible();
+    await expect(element(by.id('yes-vote'))).toBeVisible();
+    await expect(element(by.id('no-vote'))).toBeVisible();
+  });
+
+  it('should be able to see another hot take and vote again', async () => {
+    await element(by.text('Next Hot Take')).tap();
+    await expect(element(by.id('text'))).toBeVisible();
+    await expect(element(by.id('image'))).toBeVisible();
+    await element(by.id('card')).swipe('left')
+    await expect(element(by.id('yes-vote'))).toBeVisible();
+    await expect(element(by.id('no-vote'))).toBeVisible();
     await expect(element(by.text('And the people say...'))).toBeVisible();
     await expect(element(by.text('Next Hot Take'))).toBeVisible();
   });
