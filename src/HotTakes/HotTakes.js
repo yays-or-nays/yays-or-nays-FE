@@ -42,8 +42,8 @@ const HotTakes = () => {
           setHotTakeResult(hotTake.noVote++)
         }}
         style={styles.card}>
-        <Text style={styles.question}>{hotTake.question}</Text>
-        <Image style={styles.image} source={{uri: hotTake.picture}} />
+        <Text style={styles.question} testID='text'>{hotTake.question}</Text>
+        <Image style={styles.image} source={{uri: hotTake.picture}} testID='image' />
       </Card>
     ) : (
       <Text>Loading...</Text>
@@ -51,7 +51,7 @@ const HotTakes = () => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View testID='card' style={{flex: 1}}>
       <CardStack
         key={hotTake ? hotTake.id : NaN}
         style={styles.content}
@@ -62,10 +62,12 @@ const HotTakes = () => {
                 And the people say...
               </Text>
               <Text
+                testID='yes-vote'
                 style={styles.resultsText}>
                 Yes Votes: {hotTake ? hotTake.yesVote : 'Loading'}
               </Text>
               <Text
+                testID='no-vote'
                 style={styles.resultsText}>
                 No Votes: {hotTake ? hotTake.noVote : 'Loading'}
               </Text>
