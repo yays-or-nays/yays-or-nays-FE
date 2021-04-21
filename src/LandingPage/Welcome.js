@@ -25,7 +25,7 @@ export const WelcomePage = (props) => {
               For new users, click the 'How To' button below!
             </Text>
             <TouchableOpacity style={styles.button} onPress={toggleTutorial}>
-              <Text style={styles.buttonText} >How To</Text>
+              <Text style={styles.buttonText}>How To</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.infoSection}>
