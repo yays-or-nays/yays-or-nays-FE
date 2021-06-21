@@ -12,7 +12,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getHotTake} from '../Redux/Actions/hotTakes';
 
 export const Categories = () => {
-  // touch a category, open the Swiper component with the corresponding category info
   const categories = useSelector(state => state.categories.categories);
   const dispatch = useDispatch();
 

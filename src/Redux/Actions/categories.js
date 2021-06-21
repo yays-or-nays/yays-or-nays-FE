@@ -23,7 +23,6 @@ export function getCategories() {
           dispatch({
             type: GET_CATEGORIES,
             error: null,
-            // adjust below to access properly
             categories: response.data.data.tags,
           });
         } else {
