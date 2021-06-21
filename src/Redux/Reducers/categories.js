@@ -3,9 +3,6 @@ import {GET_CATEGORIES} from '../Actions/categories';
 
 // Initial State
 const categoriesInitialState = {
-  // Extension: Add in the below actions
-  // isLoading: false,
-  error: null,
   categories: [],
 };
 
@@ -18,7 +15,6 @@ export const categories = (state = categoriesInitialState, action) => {
         ...state,
         categories: action.categories,
       };
-
     default:
       return state;
   }
