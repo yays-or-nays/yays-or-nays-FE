@@ -9,7 +9,7 @@ const hotTakesInitialState = {
 
 //Reducer
 
-export const hotTakes = (state= hotTakesInitialState, action) => {
+export const hotTakes = (state = hotTakesInitialState, action) => {
   switch (action.type) {
     case GET_HOTTAKE:
     return {

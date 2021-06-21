@@ -11,7 +11,6 @@ const mutateYes = id => {
       }),
     )
     .then(response => {
-      console.log(response.data);
       if (response.status < 400) {
       } else {
         console.log('fail');

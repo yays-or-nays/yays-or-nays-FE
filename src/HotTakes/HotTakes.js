@@ -25,8 +25,6 @@ const HotTakes = () => {
   const [hotTakeResult, setHotTakeResult] = useState(null);
 
   useEffect(() => {
-    console.log(hotTakeResult)
-    console.log(hotTake)
   })
 
   const card = () => {
